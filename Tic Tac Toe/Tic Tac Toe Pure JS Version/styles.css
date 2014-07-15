@@ -1,0 +1,17 @@
+.container {
+	width: 306px;
+	height: 306px;
+	border: 1px solid black;
+	margin: auto;
+	position: relative;
+}
+
+.box {
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+	float: left;
+	position: relative;
+	font-size: 50px;
+	font-color: black;
+}
