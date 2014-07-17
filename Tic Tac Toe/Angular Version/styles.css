@@ -1,0 +1,19 @@
+.container {
+	width: 624px;
+	height: 624px;
+	margin: auto;
+}
+.boxcontainer {
+	width: 624px;
+	height: 208px;
+}
+.box {
+	width: 200px;
+	height: 200px;
+	margin: 4px;
+	float: left;
+	background-color: white;
+}
+body {
+	background-color: #DADADA;
+}

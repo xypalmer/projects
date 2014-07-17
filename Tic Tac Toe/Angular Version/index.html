@@ -1,0 +1,21 @@
+<html ng-app="tttApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	 <script src="js/angular.min.js"></script>
+	 <script src="js/angular.js"></script>
+	<title></title>
+</head>
+<body>
+	<div class="container" ng-controller="tttController">
+		<div class="boxcontainer" ng-repeat="rows in grid track by $index">
+			<div class="box" ng-repeat="boxes in rows track by $index"></div>
+		</div>
+      <h2>{{test}}</h2>
+	</div>
+
+
+</body>
+</html>
+
+<!-- ng-repeat="rows in grid"
+	ng-repeat="boxes in rows" -->
