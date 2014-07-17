@@ -1,0 +1,13 @@
+.colorbox {
+	width: 200px;
+	height: 200px;
+	border: 2px solid black;
+	animation: myfirst 10s steps(10, end) ;
+}
+
+@-webkit-keyframes myfirst {
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    100% {background: green;}
+}
