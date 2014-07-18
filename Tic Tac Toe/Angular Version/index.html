@@ -4,11 +4,15 @@
 
 	<title></title>
 </head>
-<body>
-	<div class="container" ng-controller="tttController">
-		<div class="boxcontainer" ng-repeat="rows in grid track by $index">
-			<div class="box" ng-repeat="boxes in rows track by $index" ng-style="backchange" ng-click="input($parent.$index, $index)">{{grid[$parent.$index][$index]}}</div>
+<body ng-controller="tttController" ng-style="{'backgroundColor': bodColor()}">
+	<div class="maincontainer">
+		<div class="p1info"><h1>Player 1 Wins: {{p1_wins}}</h1></div>
+		<div class="gamecontainer" >
+			<div class="boxcontainer" ng-repeat="rows in grid track by $index">
+				<div class="box" ng-repeat="boxes in rows track by $index" ng-style="{'backgroundColor': ranColor}" ng-click="input($parent.$index, $index)">{{grid[$parent.$index][$index]}}</div>
+			</div>
 		</div>
+		<div class="p2info"></div>
 	</div>
 	 <script src="js/angular.min.js"></script>
 	 <script src="js/angular.js"></script>

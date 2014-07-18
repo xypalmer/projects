@@ -1,0 +1,18 @@
+<html ng-app="tttApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<title></title>
+</head>
+<body ng-controller="tttController" ng-style="{'backgroundColor': bodColor}">
+	<div class="container" >
+		<div class="boxcontainer" ng-repeat="rows in grid track by $index">
+			<div class="box" ng-repeat="boxes in rows track by $index" ng-style="{'backgroundColor': ranColor}" ng-click="input($parent.$index, $index)">{{grid[$parent.$index][$index]}}</div>
+		</div>
+	</div>
+	<div>{{$scope.grid}}</div>
+	 <script src="js/angular.min.js"></script>
+	 <script src="js/angular.js"></script>
+
+</body>
+</html>

@@ -1,34 +1,18 @@
-.maincontainer {
-  margin-right: auto;
-  margin-left: auto;
-  width: 875px;
-  height: 474px;
-}
-.p1info {
-  width: 200px;
-  height: 474px;
-  float: left;
-}
-.p2info {
-  width: 200px;
-  height: 474px;
-  float: left;
-}
-.gamecontainer {
-	width: 474px;
-	height: 474px;
-  float: left;
+.container {
+	width: 624px;
+	height: 624px;
+	margin: auto;
 }
 .boxcontainer {
-	width: 474px;
-	height: 158px;
+	width: 624px;
+	height: 208px;
 }
 .box {
-	width: 150px;
-	height: 150px;
+	width: 200px;
+	height: 200px;
 	margin: 4px;
 	float: left;
-	background-color: grey;
+	background-color: white;
 	font-size: 20px;
 	font-color: black;
 /*	-webkit-animation: boxanimation 4s steps(1, end);*/
