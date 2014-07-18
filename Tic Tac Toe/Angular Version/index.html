@@ -1,8 +1,7 @@
 <html ng-app="tttApp">
 <head>
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	 <script src="js/angular.min.js"></script>
-	 <script src="js/angular.js"></script>
+
 	<title></title>
 </head>
 <body>
@@ -11,7 +10,8 @@
 			<div class="box" ng-repeat="boxes in rows track by $index" ng-style="backchange" ng-click="input($parent.$index, $index)">{{grid[$parent.$index][$index]}}</div>
 		</div>
 	</div>
-
+	 <script src="js/angular.min.js"></script>
+	 <script src="js/angular.js"></script>
 
 </body>
 </html>
