@@ -13,7 +13,76 @@
 	margin: 4px;
 	float: left;
 	background-color: white;
+	font-size: 20px;
+	font-color: black;
+/*	-webkit-animation: boxanimation 4s steps(1, end);*/
 }
+
+/*@-webkit-keyframes boxanimation {
+    0% {background: white;}
+    50% {background: yellow;}
+    100% {background: red;}
+}*/
+
+.box:hover {
+	background-color: red;
+	transition: 1.5s;
+}
+
+/*@-webkit-keyframes boxani {
+  0%   { background-color: red; }
+  25%  { background-color: blue; }
+  50%  { background-color: blue; }
+  75%  { background-color: red; }
+  100% { background-color: blue; }
+}*/
 body {
 	background-color: #DADADA;
 }
+
+/*bomb shake*/
+/*@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}*/
+
+/*@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}*/
+
+

@@ -8,14 +8,10 @@
 <body>
 	<div class="container" ng-controller="tttController">
 		<div class="boxcontainer" ng-repeat="rows in grid track by $index">
-			<div class="box" ng-repeat="boxes in rows track by $index"></div>
+			<div class="box" ng-repeat="boxes in rows track by $index" ng-style="backchange" ng-click="input($parent.$index, $index)">{{grid[$parent.$index][$index]}}</div>
 		</div>
-      <h2>{{test}}</h2>
 	</div>
 
 
 </body>
 </html>
-
-<!-- ng-repeat="rows in grid"
-	ng-repeat="boxes in rows" -->
