@@ -1,3 +1,23 @@
+.header {
+  margin-right: auto;
+  margin-left: auto;
+}
+h3 {
+  font-family: 'Lato', helvetica;
+  font-weight: 100;
+  font-size: 50px;
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.boxSpacingO {
+  margin-left: 8px;
+  margin-top: -45px;
+}
+.boxSpacingX {
+  margin-left: 30px;
+  margin-top: -45px;
+}
 .maincontainer {
   margin-right: auto;
   margin-left: auto;
@@ -14,10 +34,19 @@
   height: 474px;
   float: left;
 }
+h2 {
+  font-family: 'Lato', helvetica;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 80px;
+}
 .gamecontainer {
 	width: 474px;
 	height: 474px;
   float: left;
+
 }
 .boxcontainer {
 	width: 474px;
@@ -29,8 +58,10 @@
 	margin: 4px;
 	float: left;
 	background-color: grey;
-	font-size: 20px;
-	font-color: black;
+  font-family: 'Open Sans', helvetica;
+  font-size: 170px;
+  font-weight: 400;
+
 /*	-webkit-animation: boxanimation 4s steps(1, end);*/
 }
 

@@ -14,7 +14,6 @@ var diagcounter2 = 0;
 var tttApp = angular.module('tttApp', []);
 
 tttApp.controller('tttController', function ($scope) {
-
   $scope.p1_wins = 0;
   $scope.p2_wins = 0;
   $scope.p_ties = 0;
@@ -26,8 +25,6 @@ tttApp.controller('tttController', function ($scope) {
   $scope.row2 = [0, 0, 0];
   $scope.row3 = [0, 0, 0];
   $scope.grid =[$scope.row1, $scope.row2, $scope.row3];
-
-
 
     // $scope.backchange = {
     // background-color: ranColor;
@@ -115,22 +112,15 @@ tttApp.controller('tttController', function ($scope) {
   };
   //the input function
   $scope.input = function(row, column) {
-    //displaying 'X's and 'O's
-    // if ($scope.grid[row][column] === 1) {
-    //   $scope.player1_x = true;
-    // }
-    // else if ($scope.grid[row][column] === -1) {
-    //   $scope.player2_o = true;
-    // }
     //changing squares and background --->
     $scope.ranColor = colorArray[Math.floor(Math.random() * colorArray.length)];
     $scope.bodColor = function () {
-    $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
-      while ($scope.ranColor == $scope.ranColor2) {
-        $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
+      $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
+        while ($scope.ranColor == $scope.ranColor2) {
+          $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
+        }
+      return $scope.ranColor2;
       }
-    return $scope.ranColor2;
-    }
     //<---
     //player 1 goes first --->
     if (tcounter === 1) {
