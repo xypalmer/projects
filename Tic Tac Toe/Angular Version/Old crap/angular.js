@@ -1,19 +1,19 @@
+//color array for box background changes
+var colorArray = ["#f5e6c4", "#ff7771", "#835c72", "#cb6e71", "#62bdb0", "#91dec3", "#f1d365", "#ec4a2b", "#5b1c35", "#bf6049", "#ff4749", "#ff9e77", "#006a6d", "#5e4557", "#8ea07d"];
+var tcounter = 1;
+
+
+var test = [];
+
+var p1_discover = 1;
+var p2_discover = 1;
+
+var diagcounter1 = 0;
+var diagcounter2 = 0;
+
 var tttApp = angular.module('tttApp', []);
 
 tttApp.controller('tttController', function ($scope) {
-    //color array for box background changes
-  var colorArray = ["#f5e6c4", "#ff7771", "#835c72", "#cb6e71", "#62bdb0", "#91dec3", "#6497a1", "#f1d365", "#ec4a2b", "#5b1c35", "#bf6049", "#ff4749", "#ff9e77", "#006a6d", "#5e4557", "#8ea07d", "#e60266"];
-  var tcounter = 1;
-
-
-  var test = [];
-
-  var p1_discover = 1;
-  var p2_discover = 1;
-
-  var diagcounter1 = 0;
-  var diagcounter2 = 0;
-
   $scope.explosion = 0;
   $scope.bigexplosion = 0;
   $scope.p1_wins = 0;
@@ -114,18 +114,22 @@ tttApp.controller('tttController', function ($scope) {
   };
   //the input function
   $scope.input = function(row, column) {
+    //displaying 'X's and 'O's
+    // if ($scope.grid[row][column] === 1) {
+    //   $scope.player1_x = true;
+    // }
+    // else if ($scope.grid[row][column] === -1) {
+    //   $scope.player2_o = true;
+    // }
     //changing squares and background --->
-    // $scope.ranColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-    // $scope.bodColor = function () {
-    //   $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
-    //     while ($scope.ranColor == $scope.ranColor2) {
-    //       $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
-    //       if ($scope.ranColor !== $scope.ranColor2) {
-    //         break;
-    //       }
-    //     }
-    //   return $scope.ranColor2;
-    //   }
+    $scope.ranColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+    $scope.bodColor = function () {
+    $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
+      while ($scope.ranColor == $scope.ranColor2) {
+        $scope.ranColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
+      }
+    return $scope.ranColor2;
+    }
     //<---
     //player 1 goes first --->
     if (tcounter === 1) {
@@ -137,10 +141,10 @@ tttApp.controller('tttController', function ($scope) {
     }
     else if (tcounter === 2) {
       if ($scope.grid[row][column] === 0) {
-        $scope.grid[row][column] = "p2b";
+      $scope.grid[row][column] = "p2b";
       }
       else if ($scope.grid[row][column] === "p1b") {
-        $scope.grid[row][column] = "db";
+      $scope.grid[row][column] = "db";
       }
       $scope.p2_bombcounter--;
       if ($scope.p2_bombcounter === 0) {
@@ -158,12 +162,12 @@ tttApp.controller('tttController', function ($scope) {
     }
     else if (tcounter === 5) {
       if ($scope.grid[row][column] === 0) {
-        $scope.grid[row][column] = "p1b";
+      $scope.grid[row][column] = "p1b";
       }
       else if ($scope.grid[row][column] === "p2b") {
-        $scope.grid[row][column] = "db";
+      $scope.grid[row][column] = "db";
       }
-        $scope.p2_bombcounter--;
+      $scope.p2_bombcounter--;
       if ($scope.p2_bombcounter === 0) {
         tcounter ++;
       }
@@ -173,28 +177,32 @@ tttApp.controller('tttController', function ($scope) {
     else if (tcounter % 2 === 1 ) {
         if ($scope.grid[row][column] === 0 || $scope.grid[row][column] === "p1b") {
             $scope.grid[row][column] = 1;
+            // $scope.insidebox[r][c] = "X";
+            // I want the div to receive "X"
+            // look at the DOM...find this box div...BY ID...place an X in div
+
             tcounter++;
         }
-        else if ($scope.grid[row][column] === "p2b") {
+        else if ($scope.grid[row][column] === "p2b" ) {
             $scope.grid[row][column] = 0;
             $scope.explosion = 1;
-            console.log($scope.explosion);
             tcounter++;
         }
         else if ($scope.grid[row][column] === "db") {
             $scope.grid[row][column] = 0;
             $scope.bigexplosion = 1;
             tcounter++;
-        }        
+        }
     }
     else if (tcounter % 2 === 0 ) {
         if ($scope.grid[row][column] === 0 || $scope.grid[row][column] === "p2b") {
             $scope.grid[row][column] = -1; 
-            $scope.explosion = 1;
+            // $scope.insidebox[r][c] = "O";
             tcounter++;
         }
         else if ($scope.grid[row][column] === "p1b") {
             $scope.grid[row][column] = 0;
+            $scope.explosion = 1;
             tcounter++;
         }
         else if ($scope.grid[row][column] === "db") {
@@ -206,6 +214,8 @@ tttApp.controller('tttController', function ($scope) {
     checkWin();
     diagcounter1 = 0;
     diagcounter2 = 0;
+    $scope.explosion = null;
+    $scope.bigexplosion = null;
   }
 
 });
