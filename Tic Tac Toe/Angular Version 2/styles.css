@@ -4,13 +4,6 @@
   float: left;
   margin-left: 200px;
 }
-.footer {
-   width: 475px;
-  height: 100px;
-  margin-left: 200px;
-  margin-top: -70px;
-  float: left;
-}
 h3 {
   font-family: 'Lato', helvetica;
   font-weight: 100;
@@ -245,5 +238,4 @@ h2 {
 .buttonS {
   margin-left: 30px;
 }
-
 

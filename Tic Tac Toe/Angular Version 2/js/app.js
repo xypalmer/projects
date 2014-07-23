@@ -69,20 +69,6 @@ tttApp.controller('tttController', function ($scope, $timeout) {
       }
     }
   };
-  var checkTie = function () {
-    var tiecounter = 0;
-    for (r = 0; r < $scope.grid.length; r++) {
-      for (c = 0; c <$scope.grid.length; c++) {
-        if ($scope.grid[r][c] == 1 || $scope.grid[r][c] == -1) {
-          tiecounter++;
-        }
-      }
-    }
-    if (tiecounter == 9) {
-      alert("It's a tie!")
-      $scope.p_ties++;
-    }
-  }
   //check win function/add wins
   var checkWin = function() {
     for (r = 0; r < $scope.grid.length; r++ ) {  
@@ -174,18 +160,12 @@ tttApp.controller('tttController', function ($scope, $timeout) {
         alert("A bomb was removed!");
         $scope.p1shovel = false;
       }
-      else {
-        alert("No bomb was found!?");
-      }
     }
     else if ($scope.p2shovel == true) {
       if ($scope.grid[row][column] == "p1b" || $scope.grid[row][column] == "db") {
         $scope.grid[row][column] = 0;
         alert("A bomb was removed!");
         $scope.p2shovel = false;
-      }
-      else {
-        alert("No bomb was found!?");
       }
     }
     else {
@@ -282,7 +262,6 @@ tttApp.controller('tttController', function ($scope, $timeout) {
           }
       }
       checkWin();
-      checkTie();
       diagcounter1 = 0;
       diagcounter2 = 0;
     }
