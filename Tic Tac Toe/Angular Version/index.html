@@ -7,14 +7,14 @@
 	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.15/angular.js"></script>
 	<title></title>
 </head>
-<body ng-controller="tttController" ng-style="{'backgroundColor': bodColor()}">
+<body ng-controller="tttController" ng-style="{'backgroundColor': ranColor2}" ng-class="{bodyexplode: bigexplosion == 1}">
 	<div class="maincontainer">
 		<div class="header" ng-style="{'color': ranColor}">
 			<div class="tictac"><h3>Tic Tac </h3></div>
 			<div ng-class="{explode: explosion == 1}"><h3><strong>BOMBER</strong></h3></div>
 		</div>
 		<div class="lowercontainer">
-			<div class="p1info" ng-style="{'color': ranColor}">
+			<div class="p1info" ng-class="{pturn: playerTurn == 2}" ng-style="{'color': ranColor}">
 				<h2 >Player 1 Wins: {{p1_wins}}</h2>
 				<h2>Player 1 Remaining Bombs: {{p1_bombcounter}}</h2>
 			</div>
@@ -31,7 +31,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="p2info" ng-style="{'color': ranColor}">
+			<div class="p2info" ng-class="{pturn: playerTurn == 1}" ng-style="{'color': ranColor}">
 				<h2>Player 2 Wins: {{p2_wins}}</h2>
 				<h2>Player 2 Reamining Bombs: {{p2_bombcounter}}</h2>
 			</div>

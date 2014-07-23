@@ -196,36 +196,43 @@ h2 {
   float: left;
 }
 
-/*bomb shake*/
-/*@-webkit-keyframes shake {
-
-}*/
-
-/*@-webkit-keyframes tada {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+@-webkit-keyframes bodyexplode {
+  0%, 60%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
-  10%, 20% {
-    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  64%, 71%, 78%, 86%, 93% {
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
   }
 
-  30%, 50%, 70%, 90% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  67%, 74%, 81%, 84% {
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0);
+  }
+}
+
+.bodyexplode {
+  -webkit-animation-name: bodyexplode;
+  animation-name: bodyexplode;
+  -webkit-animation-duration: 3s;
+}
+
+.pturn {
+  -webkit-animation-name: flash;
+  -webkit-animation-duration: 4s; 
+  -webkit-animation-iteration-count: infinite; 
+}
+
+
+@-webkit-keyframes flash {
+  0%, 50%, 100% {
+    opacity: 1;
   }
 
-  40%, 60%, 80% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  25%, 75% {
+    opacity: 0;
   }
-
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}*/
-
+}
 
