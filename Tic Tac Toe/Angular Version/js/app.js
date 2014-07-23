@@ -10,6 +10,9 @@ tttApp.controller('tttController', function ($scope, $timeout) {
   var diagcounter1 = 0;
   var diagcounter2 = 0;
 
+  var p1shovelcounter = 1;
+  var p2shovelcounter = 1;
+
   $scope.explosion = 0;
   $scope.bigexplosion = 0;
 
@@ -135,109 +138,133 @@ tttApp.controller('tttController', function ($scope, $timeout) {
   //runing the color picker--->
   $scope.bodColor();
   //<----
+  $scope.p1shovelinput = function () {
+    if (p1shovelcounter = 1) {
+      p1shovelcounter--;
+      $scope.p1shovel = true;
+    }
+  }
+
+  $scope.p2shovelinput = function () {
+    if (p2shovelcounter = 1) {
+      p2shovelcounter--;
+      $scope.p2shovel = true;
+    }
+  }
+
   //the input function
   $scope.input = function(row, column) {
     if ($scope.p1shovel == true) {
       if ($scope.grid[row][column] == "p2b" || $scope.grid[row][column] == "db") {
         $scope.grid[row][column] = 0;
         alert("A bomb was removed!");
+        $scope.p1shovel = false;
       }
     }
-    //changing squares and background --->
-    $scope.bodColor();
-    console.log(tcounter);
-    // <---
-    //player 1 goes first --->
-    if (tcounter === 1) {
-      $scope.playerTurn = 2;
-      $scope.grid[row][column] = "p1b";
-      $scope.p1_bombcounter--;
-      if ($scope.p1_bombcounter === 0) {
-        tcounter++;
-        $scope.playerTurn = 1;
+    else if ($scope.p2shovel == true) {
+      if ($scope.grid[row][column] == "p1b" || $scope.grid[row][column] == "db") {
+        $scope.grid[row][column] = 0;
+        alert("A bomb was removed!");
+        $scope.p2shovel = false;
       }
     }
-    else if (tcounter === 2) {
-      $scope.playerTurn = 1;
-      if ($scope.grid[row][column] === 0) {
-        $scope.grid[row][column] = "p2b";
-      }
-      else if ($scope.grid[row][column] === "p1b") {
-        $scope.grid[row][column] = "db";
-      }
-      $scope.p2_bombcounter--;
-      if ($scope.p2_bombcounter === 0) {
-        tcounter += 5;
+    else {
+      //changing squares and background --->
+      $scope.bodColor();
+      console.log(tcounter);
+      // <---
+      //player 1 goes first --->
+      if (tcounter === 1) {
         $scope.playerTurn = 2;
-      }
-    }
-    //<---
-    //player 2 goes first --->
-    else if (tcounter === 4) {
-      $scope.playerTurn = 1;
-      $scope.grid[row][column] = "p2b";
-      $scope.p1_bombcounter--;
-      if ($scope.p1_bombcounter === 0) {
-        tcounter++;
-        $scope.playerTurn = 2;
-      }
-    }
-    else if (tcounter === 5) {
-      $scope.playerTurn = 2;
-      if ($scope.grid[row][column] === 0) {
         $scope.grid[row][column] = "p1b";
-      }
-      else if ($scope.grid[row][column] === "p2b") {
-        $scope.grid[row][column] = "db";
-      }
-        $scope.p2_bombcounter--;
-      if ($scope.p2_bombcounter === 0) {
-        tcounter ++;
-        $scope.playerTurn = 1;
-      }
-    }
-    //<---
-    //game beings -->
-    else if (tcounter % 2 === 1 ) {
-        $scope.playerTurn = 1;
-        if ($scope.grid[row][column] === 0 || $scope.grid[row][column] === "p1b") {
-            $scope.grid[row][column] = 1;
-            tcounter++;
+        $scope.p1_bombcounter--;
+        if ($scope.p1_bombcounter === 0) {
+          tcounter++;
+          $scope.playerTurn = 1;
         }
-        else if ($scope.grid[row][column] === "p2b") {
-            $scope.grid[row][column] = 0;
-            decimate();
-            console.log($scope.explosion);
-            tcounter++;
-        }
-        else if ($scope.grid[row][column] === "db") {
-            $scope.grid[row][column] = 0;
-            decimate();
-            doubleexplosion();
-            tcounter++;
-        }        
-    }
-    else if (tcounter % 2 === 0 ) {
-        $scope.playerTurn = 2;
-        if ($scope.grid[row][column] === 0 || $scope.grid[row][column] === "p2b") {
-            $scope.grid[row][column] = -1; 
-            tcounter++;
+      }
+      else if (tcounter === 2) {
+        $scope.playerTurn = 1;
+        if ($scope.grid[row][column] === 0) {
+          $scope.grid[row][column] = "p2b";
         }
         else if ($scope.grid[row][column] === "p1b") {
-            $scope.grid[row][column] = 0;
-            decimate();
-            tcounter++;
+          $scope.grid[row][column] = "db";
         }
-        else if ($scope.grid[row][column] === "db") {
-            $scope.grid[row][column] = 0;
-            decimate();
-            doubleexplosion();
-            tcounter++;
+        $scope.p2_bombcounter--;
+        if ($scope.p2_bombcounter === 0) {
+          tcounter += 5;
+          $scope.playerTurn = 2;
         }
+      }
+      //<---
+      //player 2 goes first --->
+      else if (tcounter === 4) {
+        $scope.playerTurn = 1;
+        $scope.grid[row][column] = "p2b";
+        $scope.p1_bombcounter--;
+        if ($scope.p1_bombcounter === 0) {
+          tcounter++;
+          $scope.playerTurn = 2;
+        }
+      }
+      else if (tcounter === 5) {
+        $scope.playerTurn = 2;
+        if ($scope.grid[row][column] === 0) {
+          $scope.grid[row][column] = "p1b";
+        }
+        else if ($scope.grid[row][column] === "p2b") {
+          $scope.grid[row][column] = "db";
+        }
+          $scope.p2_bombcounter--;
+        if ($scope.p2_bombcounter === 0) {
+          tcounter ++;
+          $scope.playerTurn = 1;
+        }
+      }
+      //<---
+      //game beings -->
+      else if (tcounter % 2 === 1 ) {
+          $scope.playerTurn = 1;
+          if ($scope.grid[row][column] === 0 || $scope.grid[row][column] === "p1b") {
+              $scope.grid[row][column] = 1;
+              tcounter++;
+          }
+          else if ($scope.grid[row][column] === "p2b") {
+              $scope.grid[row][column] = 0;
+              decimate();
+              console.log($scope.explosion);
+              tcounter++;
+          }
+          else if ($scope.grid[row][column] === "db") {
+              $scope.grid[row][column] = 0;
+              decimate();
+              doubleexplosion();
+              tcounter++;
+          }        
+      }
+      else if (tcounter % 2 === 0 ) {
+          $scope.playerTurn = 2;
+          if ($scope.grid[row][column] === 0 || $scope.grid[row][column] === "p2b") {
+              $scope.grid[row][column] = -1; 
+              tcounter++;
+          }
+          else if ($scope.grid[row][column] === "p1b") {
+              $scope.grid[row][column] = 0;
+              decimate();
+              tcounter++;
+          }
+          else if ($scope.grid[row][column] === "db") {
+              $scope.grid[row][column] = 0;
+              decimate();
+              doubleexplosion();
+              tcounter++;
+          }
+      }
+      checkWin();
+      diagcounter1 = 0;
+      diagcounter2 = 0;
     }
-    checkWin();
-    diagcounter1 = 0;
-    diagcounter2 = 0;
   }
 
 });

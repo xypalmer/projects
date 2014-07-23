@@ -14,9 +14,12 @@
 			<div ng-class="{explode: explosion == 1}"><h3><strong>BOMBER</strong></h3></div>
 		</div>
 		<div class="lowercontainer">
-			<div class="p1info" ng-class="{pturn: playerTurn == 2}" ng-style="{'color': ranColor}">
-				<h2 >Player 1 Wins: {{p1_wins}}</h2>
-				<h2>Player 1 Remaining Bombs: {{p1_bombcounter}}</h2>
+			<div class="p1info" ng-style="{'color': ranColor}">
+				<div ng-class="{pturn: playerTurn == 2}">
+					<h2 >Player 1 Wins: {{p1_wins}}</h2>
+					<h2>Player 1 Remaining Bombs: {{p1_bombcounter}}</h2>
+				</div>
+				<button class="buttonS" ng-click="p1shovelinput()">Player 1 Shovel</button>
 			</div>
 			<div class="gamecontainer" ng-style="{'color': ranColor2}" >
 				<div class="boxcontainer" ng-repeat="rows in grid track by $index">
@@ -31,9 +34,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="p2info" ng-class="{pturn: playerTurn == 1}" ng-style="{'color': ranColor}">
-				<h2>Player 2 Wins: {{p2_wins}}</h2>
-				<h2>Player 2 Reamining Bombs: {{p2_bombcounter}}</h2>
+			<div class="p2info" ng-style="{'color': ranColor}">
+				<div ng-class="{pturn: playerTurn == 1}">
+					<h2>Player 2 Wins: {{p2_wins}}</h2>
+					<h2>Player 2 Reamining Bombs: {{p2_bombcounter}}</h2>
+				</div>
+				<button class="buttonS" ng-click="p2shovelinput()">Player 2 Shovel</button>
 			</div>
 		</div>
 	</div>
