@@ -1,7 +1,7 @@
 <html ng-app="tttApp">
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Lato:200' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:200,400' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link rel="stylesheet" type="text/css" href="normalize.css">
 	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.15/angular.js"></script>
@@ -19,7 +19,7 @@
 					<h2 >Player 1 Wins: {{p1_wins}}</h2>
 					<h2>Player 1 Remaining Bombs: {{p1_bombcounter}}</h2>
 				</div>
-				<button class="buttonS" ng-click="p1shovelinput()">Player 1 Shovel</button>
+				<button class="buttonS" ng-style="{'backgroundColor': ranColor2}" ng-click="p1shovelinput()">Player 1 Shovel</button>
 			</div>
 			<div class="gamecontainer" ng-style="{'color': ranColor2}" >
 				<div class="boxcontainer" ng-repeat="rows in grid track by $index">
@@ -39,26 +39,29 @@
 					<h2>Player 2 Wins: {{p2_wins}}</h2>
 					<h2>Player 2 Reamining Bombs: {{p2_bombcounter}}</h2>
 				</div>
-				<button class="buttonS" ng-click="p2shovelinput()">Player 2 Shovel</button>
+				<button class="buttonS" ng-style="{'backgroundColor': ranColor2}" ng-click="p2shovelinput()">Player 2 Shovel</button>
 			</div>
 		</div>
 		<div class="footer" ng-style="{'color': ranColor}">
 			<h2>Ties: {{p_ties}}</h2>
 		</div>
 	</div>
-	<div ng-show="{playerWin == 1}">
+	<div ng-show="playerWin == 1">
 		<div class="gameoverbox">
 			<h4>Player 1 Wins!</h4>
+			<button class="resetbutton" ng-click="p1_reset()">Play again!</button>
 		</div>
 	</div>
-	<div ng-show="{playerWin == 2}">
+	<div ng-show="playerWin == 2">
 		<div class="gameoverbox">
 			<h4>Player 2 Wins!</h4>
+			<button class="resetbutton" ng-click="p2_reset()">Play again!</button>
 		</div>
 	</div>
-	<div ng-show="{playerWin == 3}">
+	<div ng-show="playerWin == 3">
 		<div class="gameoverbox">
 			<h4>It's a tie!</h4>
+			<button class="resetbutton" ng-click="p1_reset()">Play again!</button>
 		</div>
 	</div>
 

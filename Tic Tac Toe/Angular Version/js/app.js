@@ -6,6 +6,7 @@ tttApp.controller('tttController', function ($scope, $timeout) {
   var tcounter = 1;
 
   $scope.playerTurn = 2;
+  $scope.playerWin = 0;
 
   var diagcounter1 = 0;
   var diagcounter2 = 0;
@@ -44,12 +45,15 @@ tttApp.controller('tttController', function ($scope, $timeout) {
     // background-color: ranColor;
     // }
   //rest after player 1 wins-player 2 now goes first.
-  var p1_reset = function() {
+  $scope.p1_reset = function() {
     tcounter = 4;
     diagcounter1 = 0;
     diagcounter2 = 0;
+    $scope.p1_wins++;
+    $scope.playerWin = 0;
     $scope.p1_bombcounter = 2;
     $scope.p2_bombcounter = 2;
+    console.log("hello");
     for (i = 0; i < $scope.grid.length; i++ ) {
        for (j = 0; j < $scope.grid.length; j++ ) {
         $scope.grid[i][j] = 0;
@@ -57,10 +61,12 @@ tttApp.controller('tttController', function ($scope, $timeout) {
     }
   };
   //reset after player 2 wins-player 1 now goes first.
-  var p2_reset = function() {
+  $scope.p2_reset = function() {
     tcounter = 1;
     diagcounter1 = 0;
     diagcounter2 = 0;
+    $scope.p1_wins++;
+    $scope.playerWin = 0;
     $scope.p1_bombcounter = 2;
     $scope.p2_bombcounter = 2;
     for (i = 0; i < $scope.grid.length; i++ ) {
@@ -79,8 +85,8 @@ tttApp.controller('tttController', function ($scope, $timeout) {
       }
     }
     if (tiecounter == 9) {
-      alert("It's a tie!")
       $scope.p_ties++;
+      $scope.playerWin = 3;
     }
   }
   //check win function/add wins
@@ -91,13 +97,10 @@ tttApp.controller('tttController', function ($scope, $timeout) {
           rcounter += $scope.grid[r][c];
       }
       if (rcounter === 3) {
-          alert("Player1 Wins!");
-          p1_reset();
-          $scope.p1_wins++;
+          $scope.playerWin = 1;
       }
       else if (rcounter === -3) {
-          alert("Player2 Wins!");
-          p2_reset();
+          $scope.playerWin = 2;
       }  
 
       var ccounter = 0;
@@ -105,36 +108,24 @@ tttApp.controller('tttController', function ($scope, $timeout) {
           ccounter += $scope.grid[crow][r];
       }
       if (ccounter === 3) {
-          alert("Player1 Wins!");
-          p1_reset();
-          $scope.p1_wins++;
+          $scope.playerWin = 1;
       }
       else if (ccounter === -3) {
-          alert("Player2 Wins!");
-          p2_reset();
-          $scope.p2_wins++;
+          $scope.playerWin = 2;
       }
       diagcounter1 += $scope.grid[r][r];
       if (diagcounter1 === 3) {
-          alert("Player1 Wins");
-          p1_reset();
-          $scope.p1_wins++;
+          $scope.playerWin = 1;
       }
       else if (diagcounter1  === -3) {
-          alert("Player2 Wins");
-          p2_reset();
-          $scope.p2_wins++;
+          $scope.playerWin = 2;
       }
       diagcounter2 += $scope.grid[r][2 - r];
       if (diagcounter2  === 3) {
-          alert("Player1 Wins");
-          p1_reset();
-          $scope.p1_wins++;
+          $scope.playerWin = 1;
       }
       else if (diagcounter2  === -3) {
-          alert("Player2 Wins");
-          p2_reset();
-          $scope.p2_wins++;
+          $scope.playerWin = 2;
       }
     }
   };
@@ -176,6 +167,7 @@ tttApp.controller('tttController', function ($scope, $timeout) {
       }
       else {
         alert("No bomb was found!?");
+        $scope.p1shovel = false;
       }
     }
     else if ($scope.p2shovel == true) {
@@ -186,12 +178,12 @@ tttApp.controller('tttController', function ($scope, $timeout) {
       }
       else {
         alert("No bomb was found!?");
+        $scope.p2shovel = false;
       }
     }
     else {
       //changing squares and background --->
       $scope.bodColor();
-      console.log(tcounter);
       // <---
       //player 1 goes first --->
       if (tcounter === 1) {
@@ -282,7 +274,9 @@ tttApp.controller('tttController', function ($scope, $timeout) {
           }
       }
       checkWin();
-      checkTie();
+      if ($scope.playerWin == 0) {
+        checkTie();
+      }
       diagcounter1 = 0;
       diagcounter2 = 0;
     }
