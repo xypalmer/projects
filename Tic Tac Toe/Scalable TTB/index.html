@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="ttbApp">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+</head>
+<body ng-controller="ttbCtrl">
+	<div>
+		<select ng-model="widthOption" ng-options="width for width in boardWidth"></select>
+		<select ng-model="winOption" ng-options="win for win in numConsW"></select>
+		<select ng-model="bombOption" ng-options="bombs for bombs in numBombs"></select>
+		<button ng-click="makeBoard()">Play!</button>
+		<p>Player 1 Bombs: {{p1_bombcounter}}</p>
+		<p>Player 2 Bombs: {{p2_bombcounter}}</p>
+	</div>
+	<div class="gridContainer" ng-model="grid" ng-repeat="rows in grid track by $index">
+		<div class="box" ng-model="grid" ng-repeat="boxes in rows track by $index" ng-click="inputVal($parent.$index, $index)">
+			<div class="boxSpacingX">
+				<span ng-show="grid[$parent.$index][$index].val == 1">X</span>
+			</div>
+			<div class="boxSpacingO">
+				<span ng-show="grid[$parent.$index][$index].val == -1">O</span>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.15/angular.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.gridContainer {
+	width: 100px;
+	float: left;
+}
+.box {
+	width: 100px;
+	height: 100px;
+	background-color: white;
+	float: left;
+	border: solid 2px pink;
+}
+.box:hover {
+	background-color: pink;
+}
+body {
+	background-color: pink;
+}

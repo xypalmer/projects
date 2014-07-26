@@ -1,12 +1,17 @@
-var tttApp = angular.module('tttApp', ["firebase"]);
+var tttApp = angular.module("tttApp", ["firebase"]);
 
-tttApp.controller('tttController', function ($scope, $timeout, $firebase) {
-  var tttRef = new Firebase("https://ttbomber.firebaseio.com");
-    //color array for box background changes
+tttApp.controller('tttController', ['$scope', '$timeout', '$firebase', function ($scope, $timeout, $firebase) {
+  // var tttRef = new Firebase('https://ttbomber.firebaseio.com');
 
-  $scope.remoteGrid = $firebase(new Firebase("https://ttbomber.firebaseio.com" + "/remoteGrid"));
+  // $scope.gridContainer = {
+  //   gridArray: $scope.grid,
+  // }
 
-  $scope.remoteGrid.$bind($scope, "grid");
+  // $scope.$watch('gridContainer.gridArray', function() {
+  //   console.log('Model changed!');
+  // })
+
+  // $scope.tttRef.$bind($scope, "gridContainer");
 
   var colorArray = ["#f5e6c4", "#ff7771", "#835c72", "#cb6e71", "#62bdb0", "#91dec3", "#6497a1", "#f1d365", "#ec4a2b", "#5b1c35", "#bf6049", "#ff9e77", "#006a6d", "#5e4557", "#8ea07d"];
   var tcounter = 1;
@@ -29,15 +34,18 @@ tttApp.controller('tttController', function ($scope, $timeout, $firebase) {
 
   $scope.p1_bombcounter = 2;
   $scope.p2_bombcounter = 2;
-
+ 
   $scope.row1 = [0, 0, 0];
   $scope.row2 = [0, 0, 0];
   $scope.row3 = [0, 0, 0];
-  $scope.grid =[$scope.row1, $scope.row2, $scope.row3];
+  $scope.grid = [$scope.row1, $scope.row2, $scope.row3];
 
-  $scope.$watch("grid", function () {
-    console.log('Model changed!');
-  });
+  // $scope.grid =[
+  //   [0, 0, 0], 
+  //   [0, 0, 0], 
+  //   [0, 0, 0]
+  // ];
+
 
   var decimate = function () {
     $scope.explosion = 1;
@@ -103,7 +111,7 @@ tttApp.controller('tttController', function ($scope, $timeout, $firebase) {
   var checkWin = function() {
     for (r = 0; r < $scope.grid.length; r++ ) {  
       var rcounter = 0;
-      for( c = 0; c < $scope.row1.length; c++) {
+      for( c = 0; c < $scope.grid.length; c++) {
           rcounter += $scope.grid[r][c];
       }
       if (rcounter === 3) {
@@ -114,7 +122,7 @@ tttApp.controller('tttController', function ($scope, $timeout, $firebase) {
       }  
 
       var ccounter = 0;
-      for ( crow = 0; crow < $scope.row1.length; crow++) {
+      for ( crow = 0; crow < $scope.grid.length; crow++) {
           ccounter += $scope.grid[crow][r];
       }
       if (ccounter === 3) {
@@ -292,7 +300,7 @@ tttApp.controller('tttController', function ($scope, $timeout, $firebase) {
     }
   }
 
-});
+}]);
 
 
 

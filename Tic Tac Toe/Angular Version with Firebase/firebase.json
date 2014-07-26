@@ -1,0 +1,9 @@
+{
+  "firebase": "ttbomber",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
