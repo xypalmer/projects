@@ -1,0 +1,287 @@
+.header {
+  width: 475px;
+  height: 150px;
+  float: left;
+  margin-left: 200px;
+}
+.footer {
+   width: 475px;
+  height: 100px;
+  margin-left: 200px;
+  margin-top: -70px;
+  float: left;
+}
+h3 {
+  font-family: 'Lato', helvetica;
+  font-weight: 100;
+  font-size: 50px;
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.boxSpacingO {
+  margin-left: 8px;
+  margin-top: -45px;
+}
+.boxSpacingX {
+  margin-left: 30px;
+  margin-top: -45px;
+}
+.lowercontainer {
+  width: 875px;
+  height: 474px;
+  float: left;
+}
+.maincontainer {
+  margin-right: auto;
+  margin-left: auto;
+  width: 875px;
+  height: 624px;
+}
+.p1info {
+  width: 200px;
+  height: 474px;
+  float: left;
+}
+.p2info {
+  width: 200px;
+  height: 474px;
+  float: left;
+}
+h2 {
+  font-family: 'Lato', helvetica;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 80px;
+}
+.gamecontainer {
+	width: 474px;
+	height: 474px;
+  float: left;
+
+}
+.boxcontainer {
+	width: 474px;
+	height: 158px;
+}
+.box {
+	width: 150px;
+	height: 150px;
+	margin: 4px;
+	float: left;
+	background-color: grey;
+  font-family: 'Open Sans', helvetica;
+  font-size: 170px;
+  font-weight: 400;
+
+/*	-webkit-animation: boxanimation 4s steps(1, end);*/
+}
+
+/*@-webkit-keyframes boxanimation {
+    0% {background: white;}
+    50% {background: yellow;}
+    100% {background: red;}
+}*/
+
+.box:hover {
+	background-color: #fd4042 !important;
+	transition: 1s;
+}
+
+.explode {
+  color: red;
+  -webkit-animation-name: explode;
+  animation-name: explode;
+}
+
+@-webkit-keyframes explode {
+  0%, 15%, 30% {
+    opacity: 1;
+    color: red;
+  }
+  8%, 23% {
+    opacity: 0;
+  }
+  31%, 60% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  35%, 40%, 45%, 50%, 55% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  37%, 42%, 47%, 53% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+  61% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  70%, 75% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  80%, 87%, 94%, 98% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  84%, 90%, 96% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    color: red;
+  }
+}
+@-webkit-keyframes explode {
+  0%, 15%, 30% {
+    opacity: 1;
+    color: red;
+  }
+  8%, 23% {
+    opacity: 0;
+  }
+  31%, 60% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  35%, 40%, 45%, 50%, 55% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  37%, 42%, 47%, 53% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+  61% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  63%, 65% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  70%, 80%, 90%, 96% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  76%, 84%, 92% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    color: red;
+  }
+}
+
+.explode {
+  font-color: red;
+  float: left;
+  -webkit-animation-name: explode;
+  -webkit-animation-duration: 3s;
+}
+.tictac {
+  float: left;
+}
+
+@-webkit-keyframes bodyexplode {
+  0%, 60%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  64%, 71%, 78%, 86%, 93% {
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  67%, 74%, 81%, 84% {
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0);
+  }
+}
+
+.bodyexplode {
+  -webkit-animation-name: bodyexplode;
+  animation-name: bodyexplode;
+  -webkit-animation-duration: 3s;
+}
+
+.pturn {
+  -webkit-animation-name: flash;
+  -webkit-animation-duration: 4s; 
+  -webkit-animation-iteration-count: infinite; 
+}
+
+
+@-webkit-keyframes flash {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+.buttonS {
+  margin-left: 30px;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  font-family: 'Lato', helvetica;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.buttonS:hover {
+  background-color: #fd4042 !important;
+  transition: 1s;
+}
+.gameoverbox {
+  width: 300px;
+  height: 200px; 
+  top: 35%;
+  left: 35%;
+
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+}
+h4 {
+  font-family: 'Open Sans', helvetica;
+  font-size: 25px;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  margin-top: 50px;
+}
+.resetbutton {
+  margin-left: 100px;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  font-family: 'Lato', helvetica;
+  font-weight: 400;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+}
+

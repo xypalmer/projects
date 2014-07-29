@@ -16,13 +16,13 @@ ttbApp.controller('ttbCtrl', function ($scope) {
   $scope.bombOption = $scope.numBombs[2];
 
   //the board
-  $scope.grid = [];
-  $scope.gridRows = [];
+  $scope.grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  // $scope.gridRows = [];
 
   //making the board
   // $scope.makeBoard = function(widthOption) {
   // 	for (i = 0; i < $scope.widthOption; i++) {
-  // 		$scope.gridRows.push({val: 0, bomb: 0});
+  // 		$scope.gridRows.push(0);
   // 	}
   //   for (i = 0; i < $scope.widthOption; i++) {
   //     $scope.grid.push($scope.gridRows);
@@ -31,21 +31,16 @@ ttbApp.controller('ttbCtrl', function ($scope) {
   //   $scope.p2_bombcounter = $scope.bombOption;
   // }
 
-  $scope.makeBoard = function(widthOption) {
-    for (i = 0; i < $scope.widthOption; i++) {
-      $scope.grid.push($scope.gridRows);
-      for (j = 0; j < $scope.widthOption; j++) {
-        $scope.grid[i].push({val: 0, bomb: 0, id: j });
-      }
-    }
-    $scope.p1_bombcounter = $scope.bombOption;
-    $scope.p2_bombcounter = $scope.bombOption;
-  }
-
-//make an nested arrays then iterate and put objects into them until 
-//the width is full. so 3 x 3 means we place 9 objects in
-//objects 1-3 go into the first row, then it goes to the second array
-//
+  //   $scope.makeBoard = function(widthOption) {
+  //   for (i = 0; i < $scope.widthOption; i++) {
+  //     $scope.grid.push($scope.gridRows);
+  //     for (j = 0; j < $scope.widthOption; j++) {
+  //       $scope.grid[i].push({val: 0, bomb: 0, id: i + j});
+  //     }
+  //   }
+  //   $scope.p1_bombcounter = $scope.bombOption;
+  //   $scope.p2_bombcounter = $scope.bombOption;
+  // }
 
   //check win array
   var winArrayX = [];
@@ -68,23 +63,23 @@ ttbApp.controller('ttbCtrl', function ($scope) {
   	for (i = 0; i < $scope.grid.length; i++ ) {
   		for( j = 0; j < $scope.row1.length; j++) {
   			//push row vals
-  			gridArray1.push($scope.grid[i][j].val);
+  			gridArray1.push($scope.grid[i][j]);
         //push column vals
-        gridArray2.push($scope.grid[j][i].val);
+        gridArray2.push($scope.grid[j][i]);
   		}
       //spacing between pushes
       gridArray1.push("R");
       gridArray2.push("C");
 
       //
-      // $scope.gridArray1.push($scope.grid[i][i].val);
-      // $scope.gridArray2.push($scope.grid[i][2-r].val);
+      // $scope.gridArray1.push($scope.grid[i][i]);
+      // $scope.gridArray2.push($scope.grid[i][2-r]);
 
   		for (k = 0; k < $scope.grid.length - 1; k++) {
         //checks diagonals going downward to the left
-        gridArray1.push($scope.grid[i+k][k].val);
+        gridArray1.push($scope.grid[i+k][k]);
         //checks diagonals going upward to the right
-        gridArray2.push($scope.grid[k][i+k].val);
+        gridArray2.push($scope.grid[k][i+k]);
       }
       gridArray1.push("D1");
       gridArray2.push("D2");
@@ -155,12 +150,12 @@ ttbApp.controller('ttbCtrl', function ($scope) {
     console.log(turnCounter);
     if (turnCounter == 1) {
       //checking if bomb was already placed there
-      if ($scope.grid[row][column].bomb == 0) {
+      if ($scope.grid[row][column] == 0) {
         console.log($scope.grid[row][column]);
-      $scope.grid[row][column].bomb = "p1b";
+      $scope.grid[row][column] = "p1b";
       $scope.p1_bombcounter--;
       }
-      else if ($scope.grid[row][column].bomb == "p1b") {
+      else if ($scope.grid[row][column] == "p1b") {
         alert("You already put a bomb there!");
       }
 
@@ -170,15 +165,15 @@ ttbApp.controller('ttbCtrl', function ($scope) {
     }
     else if (turnCounter == 2) {
       //checking if bomb was already placed there
-      if ($scope.grid[row][column].bomb == 0) {
-      $scope.grid[row][column].bomb = "p2b";
+      if ($scope.grid[row][column] == 0) {
+      $scope.grid[row][column] = "p2b";
       $scope.p2_bombcounter--;
       }
-      else if ($scope.grid[row][column].bomb == "p2b") {
+      else if ($scope.grid[row][column] == "p2b") {
         alert("You already put a bomb there!");
       }
-      else if ($scope.grid[row][column].bomb == "p1b") {
-        $scope.grid[row][column].bomb = "db"
+      else if ($scope.grid[row][column] == "p1b") {
+        $scope.grid[row][column] = "db"
         $scope.p2_bombcounter--;
       }
 
@@ -188,30 +183,30 @@ ttbApp.controller('ttbCtrl', function ($scope) {
     }
     //bombs done being placed, normal game begins -->
     else if (turnCounter % 2 == 1 ) {
-      if ($scope.grid[row][column].val == 0 || $scope.grid[row][column].bomb == "p1b") {
-          $scope.grid[row][column].val = 1;
+      if ($scope.grid[row][column] == 0 || $scope.grid[row][column] == "p1b") {
+          $scope.grid[row][column] = 1;
           turnCounter++;
       }
-      else if ($scope.grid[row][column].bomb == "p2b") {
-          $scope.grid[row][column].val = 0;
+      else if ($scope.grid[row][column] == "p2b") {
+          $scope.grid[row][column] = 0;
           turnCounter++;
       }
-      else if ($scope.grid[row][column].val == "db") {
+      else if ($scope.grid[row][column] == "db") {
           $scope.grid[row][column] = 0;
           turnCounter++;
       }        
     }
       else if (turnCounter % 2 === 0 ) {
-          if ($scope.grid[row][column].val === 0 || $scope.grid[row][column].bomb === "p2b") {
-              $scope.grid[row][column].val = -1; 
+          if ($scope.grid[row][column] == 0 || $scope.grid[row][column] == "p2b") {
+              $scope.grid[row][column] = -1; 
               turnCounter++;
           }
-          else if ($scope.grid[row][column].bomb === "p1b") {
-              $scope.grid[row][column].val = 0;
+          else if ($scope.grid[row][column] == "p1b") {
+              $scope.grid[row][column] = 0;
               turnCounter++;
           }
-          else if ($scope.grid[row][column] === "db") {
-              $scope.grid[row][column].val = 0;          
+          else if ($scope.grid[row][column] == "db") {
+              $scope.grid[row][column] = 0;          
               turnCounter++;
           }
       }
